@@ -1,14 +1,13 @@
 package com.ea.ecommerceintegrationapi.controller;
 
-import com.ea.ecommerceintegrationapi.model.Account;
+import com.ea.ecommerceintegrationapi.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/api/ecommerce")
@@ -18,13 +17,49 @@ public class ECommerceIntegrationController {
     @Autowired
     private RestTemplate restTemplate;
 
-    private String order_service_url = "http://order-service/api/posts";
-    private String product_service_url = "http://product-service/api/posts";
+    private String order_service_url = "http://order-service:8081/rest/order";
+    private String product_service_url = "http://product-service:8084/rest/product";
     private String account_service_url = "http://account-service:8085/rest/account/test";
+    private String cart_service_url = "http://cart-service:8083/rest/cart";
 
     /*
     * GetProducts
     * */
+    @GetMapping("/product")
+    public String getProducts(Model model){
+        Product products = restTemplate.getForObject(product_service_url, Product.class);
+        model.addAttribute("products", products);
+        return "products_page";
+    }
+
+    /*
+    * AddToCart
+    * */
+    @PostMapping("/addToCart")
+    public void addToCart(@RequestParam Product product, @RequestParam Integer quantity, @RequestParam Long cartId, Model model){
+        Cart cart = restTemplate.getForObject(cart_service_url + "/addToCart/" + product.getId() + "/" + quantity + "/" + cartId, Cart.class);
+        model.addAttribute("Cart",cart);
+    }
+
+    /*
+    * CheckOut
+    * */
+    // Todo - create a checkout controller, which redirects to the cart page
+//    public String
+
+    /*
+    * Order
+    * */
+    // Todo how to pass payment type - id
+    @PostMapping("/create")
+    public String createOrder(@RequestParam Long accountId, @RequestParam Long cartId, @RequestParam Integer tax,
+                                @RequestParam Long shippingId, Model model){
+        Order order = restTemplate.getForObject(order_service_url + "/create/" + accountId + "/" + cartId + "/" + tax
+                + "/" + shippingId, Order.class);
+        model.addAttribute("Order", order);
+        return "order_detail";
+    }
+
 
     /*
     * GetReviewByAccountId
@@ -40,6 +75,7 @@ public class ECommerceIntegrationController {
     @GetMapping("/account")
     public String getAccountInformationByUserName(@RequestParam String userName, Model model){
         Account account = restTemplate.getForObject(account_service_url + "/" + userName, Account.class);
+        model.addAttribute("account", account);
 
         System.out.println(account.getEmail() + " " + account.getUserName());
         // Order history
