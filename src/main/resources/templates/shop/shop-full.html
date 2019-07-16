@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html layout:decorator="shared/layout"
+	xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+    <th:block layout:fragment="header">
+        <title>Shop full || Freak</title>
+    </th:block>
+
+    <th:block layout:fragment="content">
+        <!-- Start Breadcrumbs Area -->
+        <div class="breadcrumbs-area section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="breadcrumbs text-center text-white">
+                           <h3 class="text-uppercase">shop Full Grid</h3> 
+                           <ul class="breadcrumbs-list">
+                                <li>
+                                    <a href="/index" title="Return to Home">Home</a>
+                                </li>
+                                <li>/</li>
+                                <li>shop Full Grid</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Of Breadcrumbs Area -->
+        <!-- Start page content -->
+        <section id="page-content" class="page-wrapper">
+            <!-- Start Shop Full Grid View -->
+            <div class="shop-view-area pt-90 mb-40">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-2 col-xs-4">
+                            <div class="shop-tab-pill">
+                                <ul>
+                                    <li class="active"><a data-toggle="pill" href="#home"><i class="zmdi zmdi-apps"></i><span></span></a></li>
+                                    <li><a data-toggle="pill" href="#menu1"><i class="zmdi zmdi-view-list"></i><span></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-8">
+                            <div class="shop-tab-pill">
+                                <div class="show-label text-center">
+                                    <label class="text-uppercase">Sort by : </label>
+                                    <select>
+                                        <option selected="selected" value="position">Position</option>
+                                        <option value="Name">Name</option>
+                                        <option value="Price">Price</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 hidden-xs">
+                            <div class="shop-pagination">
+                                <ul>
+                                    <li><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#"><i class="zmdi zmdi-chevron-right"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 hidden-xs">
+                            <div class="shop-tab-pill show">
+                                <div class="show-label text-center">
+                                    <label class="text-uppercase">showing </label>
+                                    <select>
+                                        <option selected="selected" value="position">9</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                        <option>9</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Of Shop Full Grid View -->
+            <!-- Start Product List -->
+            <div class="product-list-tab">
+                <div class="container">
+                    <div class="row">
+                        <div class="product-list tab-content">
+                            <div role="tabpanel" class="tab-pane fade in active" id="home">
+                                <div class="col-md-3 col-sm-4 col-xs-12">
+                                    <div class="single-product mb-40">
+                                        <div class="product-img-content mb-20">
+                                            <div class="product-img">
+                                                <a href="/product-details">
+                                                    <img src="images/product/3.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="product-action text-center">
+                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
+                                                    <i class="zmdi zmdi-eye"></i>
+                                                </a>
+                                                <a href="#" title="Add to cart">
+                                                    <i class="zmdi zmdi-shopping-cart"></i>
+                                                </a>
+                                                <a href="#" title="Add to Wishlist">
+                                                    <i class="zmdi zmdi-favorite"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content text-center text-uppercase">
+                                            <a href="product-details.html" title="Slim Shirt With Stretch">Slim Shirt With Stretch</a>
+                                            <div class="rating-icon">
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star-half"></i>
+                                                <i class="zmdi zmdi-star-half"></i>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="new-price">£ 185.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-product mb-40">
+                                        <div class="product-img-content mb-20">
+                                            <div class="product-img">
+                                                <a href="product-details.html">
+                                                    <img src="images/product/8.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="product-action text-center">
+                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
+                                                    <i class="zmdi zmdi-eye"></i>
+                                                </a>
+                                                <a href="#" title="Add to cart">
+                                                    <i class="zmdi zmdi-shopping-cart"></i>
+                                                </a>
+                                                <a href="#" title="Add to Wishlist">
+                                                    <i class="zmdi zmdi-favorite"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content text-center text-uppercase">
+                                            <a href="product-details.html" title="Men’s White Short Item">Men’s White Short Item</a>
+                                            <div class="rating-icon">
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star-half"></i>
+                                                <i class="zmdi zmdi-star-half"></i>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="new-price">£ 150.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-product mb-40">
+                                        <div class="product-img-content mb-20">
+                                            <div class="product-img">
+                                                <a href="product-details.html">
+                                                    <img src="images/product/1.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <span class="new-label text-uppercase">-30%</span>
+                                            <div class="product-action text-center">
+                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
+                                                    <i class="zmdi zmdi-eye"></i>
+                                                </a>
+                                                <a href="#" title="Add to cart">
+                                                    <i class="zmdi zmdi-shopping-cart"></i>
+                                                </a>
+                                                <a href="#" title="Add to Wishlist">
+                                                    <i class="zmdi zmdi-favorite"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content text-center text-uppercase">
+                                            <a href="product-details.html" title="Twill Oversized ">Twill Oversized </a>
+                                            <div class="rating-icon">
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star-half"></i>
+                                                <i class="zmdi zmdi-star-half"></i>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="new-price">£ 150.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-4 col-xs-12">
+                                    <div class="single-product mb-40">
+                                        <div class="product-img-content mb-20">
+                                            <div class="product-img">
+                                                <a href="product-details.html">
+                                                    <img src="images/product/4.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <span class="new-label red-color text-uppercase">sale</span>
+                                            <div class="product-action text-center">
+                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
+                                                    <i class="zmdi zmdi-eye"></i>
+                                                </a>
+                                                <a href="#" title="Add to cart">
+                                                    <i class="zmdi zmdi-shopping-cart"></i>
+                                                </a>
+                                                <a href="#" title="Add to Wishlist">
+                                                    <i class="zmdi zmdi-favorite"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content text-center text-uppercase">
+                                            <a href="product-details.html" title="Men’s White Short Item">Men’s White Short Item</a>
+                                            <div class="rating-icon">
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star-half"></i>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="new-price">£ 177.00</span>
+                                                <span class="old-price">£ 200.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-product mb-40">
+                                        <div class="product-img-content mb-20">
+                                            <div class="product-img">
+                                                <a href="product-details.html">
+                                                    <img src="images/product/7.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <span class="new-label text-uppercase">-30%</span>
+                                            <div class="product-action text-center">
+                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
+                                                    <i class="zmdi zmdi-eye"></i>
+                                                </a>
+                                                <a href="#" title="Add to cart">
+                                                    <i class="zmdi zmdi-shopping-cart"></i>
+                                                </a>
+                                                <a href="#" title="Add to Wishlist">
+                                                    <i class="zmdi zmdi-favorite"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content text-center text-uppercase">
+                                            <a href="product-details.html" title="Men’s White Short Item">Men’s White Short Item</a>
+                                            <div class="rating-icon">
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star-half"></i>
+                                                <i class="zmdi zmdi-star-half"></i>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="new-price">£ 21.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-product mb-40">
+                                        <div class="product-img-content mb-20">
+                                            <div class="product-img">
+                                                <a href="product-details.html">
+                                                    <img src="images/product/2.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="product-action text-center">
+                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
+                                                    <i class="zmdi zmdi-eye"></i>
+                                                </a>
+                                                <a href="#" title="Add to cart">
+                                                    <i class="zmdi zmdi-shopping-cart"></i>
+                                                </a>
+                                                <a href="#" title="Add to Wishlist">
+                                                    <i class="zmdi zmdi-favorite"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content text-center text-uppercase">
+                                            <a href="product-details.html" title="Men’s White Short Item">Men’s White Short Item</a>
+                                            <div class="rating-icon">
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star-half"></i>
+                                                <i class="zmdi zmdi-star-half"></i>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="new-price">£ 21.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-4 hidden-xs">
+                                    <div class="single-product mb-40">
+                                        <div class="product-img-content mb-20">
+                                            <div class="product-img">
+                                                <a href="product-details.html">
+                                                    <img src="images/product/1.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <span class="new-label text-uppercase">New</span>
+                                            <div class="product-action text-center">
+                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
+                                                    <i class="zmdi zmdi-eye"></i>
+                                                </a>
+                                                <a href="#" title="Add to cart">
+                                                    <i class="zmdi zmdi-shopping-cart"></i>
+                                                </a>
+                                                <a href="#" title="Add to Wishlist">
+                                                    <i class="zmdi zmdi-favorite"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content text-center text-uppercase">
+                                            <a href="product-details.html" title="Men’s White Short Item">Men’s White Short Item</a>
+                                            <div class="rating-icon">
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star-half"></i>
+                                                <i class="zmdi zmdi-star-half"></i>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="new-price">£ 38.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-product mb-40">
+                                        <div class="product-img-content mb-20">
+                                            <div class="product-img">
+                                                <a href="product-details.html">
+                                                    <img src="images/product/6.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="product-action text-center">
+                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
+                                                    <i class="zmdi zmdi-eye"></i>
+                                                </a>
+                                                <a href="#" title="Add to cart">
+                                                    <i class="zmdi zmdi-shopping-cart"></i>
+                                                </a>
+                                                <a href="#" title="Add to Wishlist">
+                                                    <i class="zmdi zmdi-favorite"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content text-center text-uppercase">
+                                            <a href="product-details.html" title="Men’s White Short Item">Men’s White Short Item</a>
+                                            <div class="rating-icon">
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star-half"></i>
+                                                <i class="zmdi zmdi-star-half"></i>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="new-price">£ 21.65</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-product mb-40">
+                                        <div class="product-img-content mb-20">
+                                            <div class="product-img">
+                                                <a href="product-details.html">
+                                                    <img src="images/product/3.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <span class="new-label text-uppercase">-30%</span>
+                                            <div class="product-action text-center">
+                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
+                                                    <i class="zmdi zmdi-eye"></i>
+                                                </a>
+                                                <a href="#" title="Add to cart">
+                                                    <i class="zmdi zmdi-shopping-cart"></i>
+                                                </a>
+                                                <a href="#" title="Add to Wishlist">
+                                                    <i class="zmdi zmdi-favorite"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content text-center text-uppercase">
+                                            <a href="product-details.html" title="Men’s White Short Item">Men’s White Short Item</a>
+                                            <div class="rating-icon">
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star-half"></i>
+                                                <i class="zmdi zmdi-star-half"></i>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="new-price">£ 21.65</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 hidden-sm hidden-xs">
+                                    <div class="single-product mb-40">
+                                        <div class="product-img-content mb-20">
+                                            <div class="product-img">
+                                                <a href="product-details.html">
+                                                    <img src="images/product/2.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="product-action text-center">
+                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
+                                                    <i class="zmdi zmdi-eye"></i>
+                                                </a>
+                                                <a href="#" title="Add to cart">
+                                                    <i class="zmdi zmdi-shopping-cart"></i>
+                                                </a>
+                                                <a href="#" title="Add to Wishlist">
+                                                    <i class="zmdi zmdi-favorite"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content text-center text-uppercase">
+                                            <a href="product-details.html" title="Skinny In Charcoal">Skinny In Charcoal</a>
+                                            <div class="rating-icon">
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star-half"></i>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="new-price">£ 38.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-product mb-40">
+                                        <div class="product-img-content mb-20">
+                                            <div class="product-img">
+                                                <a href="product-details.html">
+                                                    <img src="images/product/5.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <span class="new-label text-uppercase">-30%</span>
+                                            <div class="product-action text-center">
+                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
+                                                    <i class="zmdi zmdi-eye"></i>
+                                                </a>
+                                                <a href="#" title="Add to cart">
+                                                    <i class="zmdi zmdi-shopping-cart"></i>
+                                                </a>
+                                                <a href="#" title="Add to Wishlist">
+                                                    <i class="zmdi zmdi-favorite"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content text-center text-uppercase">
+                                            <a href="product-details.html" title="Shirt in Bee Print">Shirt in Bee Print</a>
+                                            <div class="rating-icon">
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star-half"></i>
+                                                <i class="zmdi zmdi-star-half"></i>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="new-price">£ 21.65</span>
+                                                <span class="old-price">£ 24.60</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-product mb-40">
+                                        <div class="product-img-content mb-20">
+                                            <div class="product-img">
+                                                <a href="product-details.html">
+                                                    <img src="images/product/4.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <span class="new-label text-uppercase">New</span>
+                                            <div class="product-action text-center">
+                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
+                                                    <i class="zmdi zmdi-eye"></i>
+                                                </a>
+                                                <a href="#" title="Add to cart">
+                                                    <i class="zmdi zmdi-shopping-cart"></i>
+                                                </a>
+                                                <a href="#" title="Add to Wishlist">
+                                                    <i class="zmdi zmdi-favorite"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content text-center text-uppercase">
+                                            <a href="product-details.html" title="Shirt in Bee Print">Shirt in Bee Print</a>
+                                            <div class="rating-icon">
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star"></i>
+                                                <i class="zmdi zmdi-star-half"></i>
+                                                <i class="zmdi zmdi-star-half"></i>
+                                            </div>
+                                            <div class="product-price">
+                                                <span class="new-price">£ 21.65</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="menu1">
+                                <div class="single-product mb-30">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-5 col-md-4">
+                                            <div class="product-img">
+                                                <a href="product-details.html">
+                                                    <img src="images/product/6.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="product-action text-center">
+                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
+                                                    <i class="zmdi zmdi-eye"></i>
+                                                </a>
+                                                <a title="Add to cart" href="#">
+                                                    <i class="zmdi zmdi-shopping-cart"></i>
+                                                </a>
+                                                <a title="Add to Wishlist" href="#">
+                                                    <i class="zmdi zmdi-favorite"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-7 col-md-8">
+                                            <div class="product-content text-uppercase mt-120">
+                                                <a title="Men’s Blue Short T-Shirt" href="product-details.html">Men’s Blue Short T-Shirt</a>
+                                                <div class="rating-icon ptb-20">
+                                                    <i class="zmdi zmdi-star"></i>
+                                                    <i class="zmdi zmdi-star"></i>
+                                                    <i class="zmdi zmdi-star"></i>
+                                                    <i class="zmdi zmdi-star-half"></i>
+                                                    <i class="zmdi zmdi-star-half"></i>
+                                                </div>
+                                                <div class="product-price pb-10">
+                                                    <span class="new-price">£ 38.00</span>
+                                                    <span class="old-price">£ 45.00</span>
+                                                </div>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempici didunt ut labore et dolore magna aliqua. Ut enim ad min im veniam, quis notrud cai exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis a aute irure dolor in reprehenderit in voluptate </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="single-product mb-30">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-5 col-md-4">
+                                            <div class="product-img">
+                                                <a href="product-details.html">
+                                                    <img src="images/product/1.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="product-action text-center">
+                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
+                                                    <i class="zmdi zmdi-eye"></i>
+                                                </a>
+                                                <a title="Add to cart" href="#">
+                                                    <i class="zmdi zmdi-shopping-cart"></i>
+                                                </a>
+                                                <a title="Add to Wishlist" href="#">
+                                                    <i class="zmdi zmdi-favorite"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-7 col-md-8">
+                                            <div class="product-content text-uppercase mt-120">
+                                                <a title="Men’s White Short Item" href="product-details.html">Men’s White Short Item</a>
+                                                <div class="rating-icon ptb-20">
+                                                    <i class="zmdi zmdi-star"></i>
+                                                    <i class="zmdi zmdi-star"></i>
+                                                    <i class="zmdi zmdi-star"></i>
+                                                    <i class="zmdi zmdi-star-half"></i>
+                                                    <i class="zmdi zmdi-star-half"></i>
+                                                </div>
+                                                <div class="product-price pb-10">
+                                                    <span class="new-price">£ 38.00</span>
+                                                    <span class="old-price">£ 45.00</span>
+                                                </div>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempici didunt ut labore et dolore magna aliqua. Ut enim ad min im veniam, quis notrud cai exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis a aute irure dolor in reprehenderit in voluptate </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="single-product mb-30">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-5 col-md-4">
+                                            <div class="product-img">
+                                                <a href="product-details.html">
+                                                    <img src="images/product/5.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="product-action text-center">
+                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
+                                                    <i class="zmdi zmdi-eye"></i>
+                                                </a>
+                                                <a title="Add to cart" href="#">
+                                                    <i class="zmdi zmdi-shopping-cart"></i>
+                                                </a>
+                                                <a title="Add to Wishlist" href="#">
+                                                    <i class="zmdi zmdi-favorite"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-7 col-md-8">
+                                            <div class="product-content text-uppercase mt-120">
+                                                <a title="Men’s White Short Item" href="product-details.html">Men’s White Short Item</a>
+                                                <div class="rating-icon ptb-20">
+                                                    <i class="zmdi zmdi-star"></i>
+                                                    <i class="zmdi zmdi-star"></i>
+                                                    <i class="zmdi zmdi-star"></i>
+                                                    <i class="zmdi zmdi-star-half"></i>
+                                                    <i class="zmdi zmdi-star-half"></i>
+                                                </div>
+                                                <div class="product-price pb-10">
+                                                    <span class="new-price">£ 38.00</span>
+                                                    <span class="old-price">£ 45.00</span>
+                                                </div>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempici didunt ut labore et dolore magna aliqua. Ut enim ad min im veniam, quis notrud cai exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis a aute irure dolor in reprehenderit in voluptate </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="single-product mb-30">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-5 col-md-4">
+                                            <div class="product-img">
+                                                <a href="product-details.html">
+                                                    <img src="images/product/2.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="product-action text-center">
+                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
+                                                    <i class="zmdi zmdi-eye"></i>
+                                                </a>
+                                                <a title="Add to cart" href="#">
+                                                    <i class="zmdi zmdi-shopping-cart"></i>
+                                                </a>
+                                                <a title="Add to Wishlist" href="#">
+                                                    <i class="zmdi zmdi-favorite"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-7 col-md-8">
+                                            <div class="product-content text-uppercase mt-120">
+                                                <a title="Men’s White Short Item" href="product-details.html">Men’s White Short Item</a>
+                                                <div class="rating-icon ptb-20">
+                                                    <i class="zmdi zmdi-star"></i>
+                                                    <i class="zmdi zmdi-star"></i>
+                                                    <i class="zmdi zmdi-star"></i>
+                                                    <i class="zmdi zmdi-star-half"></i>
+                                                    <i class="zmdi zmdi-star-half"></i>
+                                                </div>
+                                                <div class="product-price pb-10">
+                                                    <span class="new-price">£ 38.00</span>
+                                                    <span class="old-price">£ 45.00</span>
+                                                </div>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempici didunt ut labore et dolore magna aliqua. Ut enim ad min im veniam, quis notrud cai exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis a aute irure dolor in reprehenderit in voluptate </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Start Shop Full Grid View -->
+            <div class="shop-view-area pb-90">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-2 col-xs-4">
+                            <div class="shop-tab-pill">
+                                <ul>
+                                    <li class="active"><a data-toggle="pill" href="#home"><i class="zmdi zmdi-apps"></i><span></span></a></li>
+                                    <li><a data-toggle="pill" href="#menu1"><i class="zmdi zmdi-view-list"></i><span></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-8">
+                            <div class="shop-tab-pill">
+                                <div class="show-label text-center">
+                                    <label class="text-uppercase">Sort by : </label>
+                                    <select>
+                                        <option selected="selected" value="position">Position</option>
+                                        <option value="Name">Name</option>
+                                        <option value="Price">Price</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 hidden-xs">
+                            <div class="shop-pagination">
+                                <ul>
+                                    <li><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#"><i class="zmdi zmdi-chevron-right"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 hidden-xs">
+                            <div class="shop-tab-pill show">
+                                <div class="show-label text-center">
+                                    <label class="text-uppercase">showing </label>
+                                    <select>
+                                        <option selected="selected" value="position">9</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                        <option>9</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Of Shop Full Grid View -->
+
+            <!-- Start Brand Area -->
+            <div class="brand-area pb-90">
+                <div class="container">
+                    <div class="row">
+                        <div class="brand-list">
+                            <div class="col-md-12">
+                                <div class="single-brand text-center">
+                                    <a href="#">
+                                        <img src="images/brand/1.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="single-brand text-center">
+                                    <a href="#">
+                                        <img src="images/brand/2.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="single-brand text-center">
+                                    <a href="#">
+                                        <img src="images/brand/3.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="single-brand text-center">
+                                    <a href="#">
+                                        <img src="images/brand/4.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="single-brand text-center">
+                                    <a href="#">
+                                        <img src="images/brand/5.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="single-brand text-center">
+                                    <a href="#">
+                                        <img src="images/brand/6.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                             <div class="col-md-12">
+                                <div class="single-brand text-center">
+                                    <a href="#">
+                                        <img src="images/brand/1.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="single-brand text-center">
+                                    <a href="#">
+                                        <img src="images/brand/2.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="single-brand text-center">
+                                    <a href="#">
+                                        <img src="images/brand/3.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Of Brand Area -->
+            <!-- Start Newsletter Area -->
+            <div class="newsletter-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="newsletter-content default-bg clearfix ptb-40">
+                            <div class="col-md-offset-2 col-md-3 col-sm-5">
+                                <div class="newsletter-title text-white text-uppercase">
+                                    <h4>NewsLetter Sign-Up</h4>
+                                </div>
+                            </div>
+                            <div class="col-md-5 col-sm-7">
+                                <div class="signup-form">
+                                    <form class="news-form" action="#">
+                                        <input type="text" placeholder="Enter your email address..." class="f-form">
+                                        <button class="submit text-uppercase">subscribe</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Of Newsletter Area -->
+        </section>
+        <!-- End page content -->
+
+        <!--Quickview Product Start -->
+        <div id="quickview-wrapper">
+            <!-- Modal -->
+            <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="modal-product">
+                                <div class="single-product-image">
+                                    <div id="product-img-content">
+                                        <div id="my-tab-content" class="tab-content mb-20">
+                                            <div class="tab-pane b-img active" id="view1">
+                                                <a class="venobox" href="images/product/product-details/1.jpg" data-gall="gallery" title=""><img src="images/product/product-details/1.jpg" alt=""></a>
+                                            </div>
+                                            <div class="tab-pane b-img" id="view2">
+                                                <a class="venobox" href="images/product/product-details/2.jpg" data-gall="gallery" title=""><img src="images/product/product-details/2.jpg" alt=""></a>
+                                            </div>
+                                            <div class="tab-pane b-img" id="view3">
+                                                <a class="venobox" href="images/product/product-details/3.jpg" data-gall="gallery" title=""><img src="images/product/product-details/3.jpg" alt=""></a>
+                                            </div>
+                                            <div class="tab-pane b-img" id="view4">
+                                                <a class="venobox" href="images/product/product-details/4.jpg" data-gall="gallery" title=""><img src="images/product/product-details/4.jpg" alt=""></a>
+                                            </div>
+                                        </div>
+                                        <div id="viewproduct" class="nav nav-tabs product-view bxslider" data-tabs="tabs">
+                                            <div class="pro-view b-img active"><a href="#view1" data-toggle="tab"><img src="images/product/product-details/s-1.jpg" alt=""></a></div>
+                                            <div class="pro-view b-img"><a href="#view2" data-toggle="tab"><img src="images/product/product-details/s-2.jpg" alt=""></a></div>
+                                            <div class="pro-view b-img"><a href="#view3" data-toggle="tab"><img src="images/product/product-details/s-3.jpg" alt=""></a></div>
+                                            <div class="pro-view b-img"><a href="#view4" data-toggle="tab"><img src="images/product/product-details/s-4.jpg" alt=""></a></div>
+                                        </div>
+                                    </div>
+                                </div>                            
+                                <div class="product-details-content">
+                                    <div class="product-content text-uppercase">
+                                        <a href="product-details.html" title="Slim Shirt With Stretch">Slim Shirt With Stretch</a>
+                                        <div class="rating-icon pb-20 mt-10">
+                                            <i class="zmdi zmdi-star"></i>
+                                            <i class="zmdi zmdi-star"></i>
+                                            <i class="zmdi zmdi-star"></i>
+                                            <i class="zmdi zmdi-star-half"></i>
+                                            <i class="zmdi zmdi-star-half"></i>
+                                        </div>
+                                        <div class="product-price pb-20">
+                                            <span class="new-price">£ 185.00</span>
+                                            <span class="old-price">£ 200.00</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-view pb-20">
+                                        <h4 class="product-details-tilte text-uppercase">overview</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. luptate. </p>
+                                    </div>
+                                    <div class="product-size text-uppercase pb-30">
+                                        <h4 class="product-details-tilte text-uppercase pb-10">size</h4>
+                                        <ul>
+                                            <li><a href="#">s</a></li>
+                                            <li><a href="#">m</a></li>
+                                            <li><a href="#">l</a></li>
+                                            <li><a href="#">xl</a></li>
+                                            <li><a href="#">xxl</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product-attributes clearfix">
+                                        <div class="product-color text-uppercase pb-30">
+                                            <h4 class="product-details-tilte text-uppercase pb-10">color</h4>
+                                            <ul>
+                                                <li class="color-1"><a href="#"></a></li>
+                                                <li class="color-2"><a href="#"></a></li>
+                                                <li class="color-3"><a href="#"></a></li>
+                                                <li class="color-4"><a href="#"></a></li>
+                                            </ul>
+                                        </div> 
+                                        <div class="pull-left" id="quantity-wanted">
+                                            <h4 class="product-details-tilte text-uppercase pb-10">quantity</h4>
+                                            <input type="number" value="1">  
+                                        </div>                                  
+                                    </div>
+                                    <div class="product-action-shop text-center mb-30">
+                                        <a href="#" title="Quick view">
+                                            <i class="zmdi zmdi-eye"></i>
+                                        </a>
+                                        <a href="#" title="Add to cart">
+                                            <i class="zmdi zmdi-shopping-cart"></i>
+                                        </a>
+                                        <a href="#" title="Add to Wishlist">
+                                            <i class="zmdi zmdi-favorite"></i>
+                                        </a>
+                                    </div>
+                                    <div class="socialsharing-product">
+                                        <h4 class="product-details-tilte text-uppercase pb-10">share this on</h4>
+                                        <button type="button"><i class="zmdi zmdi-facebook"></i></button>
+                                        <button type="button"><i class="zmdi zmdi-instagram"></i></button>
+                                        <button type="button"><i class="zmdi zmdi-rss"></i></button>
+                                        <button type="button"><i class="zmdi zmdi-twitter"></i></button>
+                                        <button type="button"><i class="zmdi zmdi-pinterest"></i></button>
+                                    </div>
+                                </div>
+                                <!-- .product-info -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End of Quickview Product--> 
+    </th:block>
+
+    <th:block layout:fragment="footer">
+    </th:block>
+               
+</body>
+
+</html>
