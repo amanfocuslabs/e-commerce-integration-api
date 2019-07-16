@@ -2,12 +2,15 @@ package com.ea.ecommerceintegrationapi.controller;
 
 import com.ea.ecommerceintegrationapi.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @CrossOrigin
@@ -26,7 +29,7 @@ public class ECommerceIntegrationController {
     * */
     @GetMapping("/product")
     public String getProducts(Model model){
-        Product products = restTemplate.getForObject(product_service_url, Product.class);
+        List<Product> products = restTemplate.exchange(product_service_url, HttpMethod.GET, null, new ParameterizedTypeReference<List<Product>>(){}).getBody();
         model.addAttribute("products", products);
         return "shop/shop";
     }
@@ -43,13 +46,16 @@ public class ECommerceIntegrationController {
     /*
     * CheckOut
     * */
-    // Todo - create a checkout controller, which redirects to the cart page
-//    public String
+    @PostMapping("/checkOutCart")
+    public String checkOut(@RequestParam Cart cart, Model model){
+        model.addAttribute("Cart", cart);
+        return "cart_page";
+    }
 
     /*
     * Order
     * */
-    // Todo how to pass payment type - id
+    // Todo figure out how to pass payment type - id
     @PostMapping("/create")
     public String createOrder(@RequestParam Long accountId, @RequestParam Long cartId, @RequestParam Integer tax,
                                 @RequestParam Long shippingId, Model model){
