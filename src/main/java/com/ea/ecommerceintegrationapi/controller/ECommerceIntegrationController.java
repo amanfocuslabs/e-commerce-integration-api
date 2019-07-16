@@ -10,7 +10,6 @@ import org.springframework.web.client.RestTemplate;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/api/ecommerce")
 @CrossOrigin
 public class ECommerceIntegrationController {
 
@@ -29,7 +28,7 @@ public class ECommerceIntegrationController {
     public String getProducts(Model model){
         Product products = restTemplate.getForObject(product_service_url, Product.class);
         model.addAttribute("products", products);
-        return "products_page";
+        return "shop/shop";
     }
 
     /*
@@ -80,5 +79,50 @@ public class ECommerceIntegrationController {
         System.out.println(account.getEmail() + " " + account.getUserName());
         // Order history
         return "account_profile";
+    }
+
+    @RequestMapping(value = "/product-details" , method = RequestMethod.GET)   
+    public String productDetails(){
+        return "product/details";
+    }
+    @RequestMapping(value = "/blog" , method = RequestMethod.GET)   
+    public String blog(){
+        return "blog/blog";
+    }
+
+    @RequestMapping(value = "/blog-details" , method = RequestMethod.GET)   
+    public String blogDetails(){
+        return "blog/blog-details";
+    }
+
+    @RequestMapping(value = "/" , method = RequestMethod.GET)   
+    public String home(){
+        return "home/index";
+    }
+
+    @RequestMapping(value = "/login" , method = RequestMethod.GET)   
+    public String login(){
+        return "account/login";
+    }
+
+    @RequestMapping(value = "/checkout" , method = RequestMethod.GET)   
+    public String checkout(){
+        return "shop/checkout";
+    }
+    @RequestMapping(value = "/compare" , method = RequestMethod.GET)   
+    public String compare(){
+        return "product/compare";
+    }
+    @RequestMapping(value = "/wishlist" , method = RequestMethod.GET)   
+    public String wishlist(){
+        return "account/wishlist";
+    }
+    @RequestMapping(value = "/contact" , method = RequestMethod.GET)   
+    public String contact(){
+        return "about/contact";
+    }
+    @RequestMapping(value = "/about" , method = RequestMethod.GET)   
+    public String about(){
+        return "about/about";
     }
 }
