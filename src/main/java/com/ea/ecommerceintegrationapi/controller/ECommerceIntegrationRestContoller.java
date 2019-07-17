@@ -1,5 +1,6 @@
 package com.ea.ecommerceintegrationapi.controller;
 
+import com.ea.ecommerceintegrationapi.model.Cart;
 import com.ea.ecommerceintegrationapi.model.Product;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +30,9 @@ public class ECommerceIntegrationRestContoller{
     * AddToCart
     * */
     @PostMapping("/addToCart")
-    public void addToCart(@RequestBody int id){
+    public Cart addToCart(@RequestBody int id){
         //Cart cart = restTemplate.getForObject(cart_service_url + "/addToCart/" + product.getId() + "/" + quantity + "/" + cartId, Cart.class);
         //model.addAttribute("Cart",cart);
-        System.out.println(id);
+        return restTemplate.postForObject(cart_service_url + "/addToCart/" + id + "/" + 1 + "/" + 1, null, Cart.class);
     }
 }
