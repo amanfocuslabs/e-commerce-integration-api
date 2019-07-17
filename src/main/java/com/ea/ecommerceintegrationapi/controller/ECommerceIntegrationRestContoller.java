@@ -1,9 +1,13 @@
 package com.ea.ecommerceintegrationapi.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import com.ea.ecommerceintegrationapi.model.Cart;
 import com.ea.ecommerceintegrationapi.model.Product;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
@@ -15,6 +19,7 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 @RequestMapping("/api")
+@Scope("session")
 public class ECommerceIntegrationRestContoller{
 
 
@@ -30,10 +35,11 @@ public class ECommerceIntegrationRestContoller{
     * AddToCart
     * */
     @PostMapping("/addToCart")
-    public Cart addToCart(@RequestBody int id){
+    public Cart addToCart(@RequestBody int id , HttpServletRequest request){
         
         Cart c =  restTemplate.postForObject(cart_service_url + "/addToCart/" + id + "/" + 1 + "/" + 1, null, Cart.class);
         System.out.println(c.getId());   
+        request.getSession().setAttribute("cartId",c.getId() );
         return c;
     }
 }

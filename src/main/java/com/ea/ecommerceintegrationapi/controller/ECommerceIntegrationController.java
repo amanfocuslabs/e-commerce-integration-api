@@ -3,6 +3,7 @@ package com.ea.ecommerceintegrationapi.controller;
 import com.ea.ecommerceintegrationapi.dto.ReviewDto;
 import com.ea.ecommerceintegrationapi.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Controller;
@@ -13,8 +14,12 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Controller
 @CrossOrigin
+@Scope("session")
 public class ECommerceIntegrationController {
 
     @Autowired
@@ -152,8 +157,11 @@ public class ECommerceIntegrationController {
         return "about/about";
     }
 
-    @RequestMapping(value = "/cart" , method = RequestMethod.GET)   
-    public String cart(Model model){
+    @RequestMapping(value = "/cart" ,method = RequestMethod.GET)
+    public String cart(Model model , HttpServletRequest session){
+
+        Long cartId = (Long)session.getSession().getAttribute("cartId");
+        System.out.println("******************* :" + cartId);
         List<Product> products = restTemplate.exchange(product_service_url, HttpMethod.GET, null, new ParameterizedTypeReference<List<Product>>(){}).getBody();
         model.addAttribute("products", products);
         for (Product p : products) {
