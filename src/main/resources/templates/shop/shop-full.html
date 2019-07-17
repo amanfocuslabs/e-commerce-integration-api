@@ -107,9 +107,12 @@
                                                 <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
                                                     <i class="zmdi zmdi-eye"></i>
                                                 </a>
-                                                <a href="#" title="Add to cart">
+
+                                                <a class = "addToCart" title="Add to cart" th:attr="onclick=|addToCart(${product.id} , '${product.productName}'  ,${product.price} )|">
                                                     <i class="zmdi zmdi-shopping-cart"></i>
                                                 </a>
+
+
                                                 <a href="#" title="Add to Wishlist">
                                                     <i class="zmdi zmdi-favorite"></i>
                                                 </a>
@@ -872,6 +875,8 @@
     </th:block>
 
     <th:block layout:fragment="footer">
+         <!--  cart script version -->
+         <script src="js/restajax.js"></script>
     </th:block>
                
 </body>
