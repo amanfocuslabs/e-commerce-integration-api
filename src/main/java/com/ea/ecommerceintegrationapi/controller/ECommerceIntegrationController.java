@@ -1,5 +1,6 @@
 package com.ea.ecommerceintegrationapi.controller;
 
+import com.ea.ecommerceintegrationapi.dto.ReviewDto;
 import com.ea.ecommerceintegrationapi.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @CrossOrigin
@@ -20,7 +22,8 @@ public class ECommerceIntegrationController {
 
     private String order_service_url = "http://order-service:8081/rest/order/";
     private String product_service_url = "http://product-service:8084/rest/product/";
-    private String account_service_url = "http://account-service:8085/rest/account/test";
+    private String review_service_url = "http://review-service:8089/rest/review/";
+    private String account_service_url = "http://account-service:8085/rest/account/";
     private String cart_service_url = "http://cart-service:8083/rest/cart";
 
     /*
@@ -42,7 +45,7 @@ public class ECommerceIntegrationController {
     * */
     @PostMapping("/addToCart")
     public void addToCart(@RequestParam Product product, @RequestParam Integer quantity, @RequestParam Long cartId, Model model){
-        Cart cart = restTemplate.getForObject(cart_service_url + "/addToCart/" + product.getId() + "/" + quantity + "/" + cartId, Cart.class);
+        Cart cart = restTemplate.postForObject(cart_service_url + "/addToCart/" + product.getId() + "/" + quantity + "/" + cartId, null, Cart.class);
         model.addAttribute("Cart",cart);
     }
 
@@ -62,8 +65,8 @@ public class ECommerceIntegrationController {
     @PostMapping("/create")
     public String createOrder(@RequestParam Long accountId, @RequestParam Long cartId, @RequestParam Integer tax,
                                 @RequestParam Long shippingId, Model model){
-        Order order = restTemplate.getForObject(order_service_url + "/create/" + accountId + "/" + cartId + "/" + tax
-                + "/" + shippingId, Order.class);
+        Order order = restTemplate.postForObject(order_service_url + "/create/" + accountId + "/" + cartId + "/" + tax
+                + "/" + shippingId, null, Order.class);
         model.addAttribute("Order", order);
         return "order_detail";
     }
@@ -90,10 +93,24 @@ public class ECommerceIntegrationController {
         return "accountDetail";
     }
 
-    @RequestMapping(value = "/product-details" , method = RequestMethod.GET)   
-    public String productDetails(){
-        return "product/details";
+    /*
+    * Product Detail
+    * */
+    @GetMapping("/product-details")
+    public String productDetails(@RequestParam String productId, Model model){
+//        Todo - To create a rest controller pass a DTO of the combination of product, review and account
+        Product product = restTemplate.getForObject(product_service_url + "/" + productId, Product.class);
+        model.addAttribute("product", product);
+
+        List<Review> reviews = restTemplate.exchange(review_service_url + "/getReviewByProduct/" + productId, HttpMethod.GET, null, new ParameterizedTypeReference<List<Review>>(){}).getBody();
+        model.addAttribute("reviews", reviews.stream()
+                .map(review ->
+                        new ReviewDto(review.getId(), review.getDate(), review.getContent(), review.getRating(),
+                                restTemplate.getForObject(account_service_url + "/" + review.getAccountId(), Account.class).getUserName()))
+                .collect(Collectors.toList()));
+        return "product/product-details";
     }
+
     @RequestMapping(value = "/blog" , method = RequestMethod.GET)   
     public String blog(){
         return "blog/blog";

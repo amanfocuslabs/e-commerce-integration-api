@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html layout:decorator="shared/layout"
-    xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
     
 <body>
     <th:block layout:fragment="header">
@@ -63,7 +63,7 @@
                             <div class="col-sm-7">
                                 <div class="product-details-content">
                                     <div class="product-content text-uppercase">
-                                        <a title="Slim Shirt With Stretch" href="product-details.html">Slim Shirt With Stretch</a>
+                                        <a title="Slim Shirt With Stretch" href="product-details.html" th:text="${product.getProductName()}"></a>
                                         <div class="rating-icon pb-30 mt-10">
                                             <i class="zmdi zmdi-star"></i>
                                             <i class="zmdi zmdi-star"></i>
@@ -72,13 +72,13 @@
                                             <i class="zmdi zmdi-star-half"></i>
                                         </div>
                                         <div class="product-price pb-30">
-                                            <span class="new-price">£ 185.00</span>
-                                            <span class="old-price">£ 200.00</span>
+                                            <span class="new-price" th:text="${product.getPrice()}"></span>
                                         </div>
                                     </div>
                                     <div class="product-view pb-30">
                                         <h4 class="product-details-tilte text-uppercase">overview</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. luptate. </p>
+                                        <p th:text="Catagory + ${product.getProductCategory()}">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. luptate. </p>
+                                        <p th:text="${product.getProductInformation()}">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. luptate. </p>
                                     </div>
                                     <div class="product-size text-uppercase pb-40">
                                         <h4 class="product-details-tilte text-uppercase pb-10">size</h4>
@@ -140,26 +140,37 @@
                                     <div class="clearfix"></div>
                                     <div class="tab-content review">
                                         <div role="tabpanel" class="tab-pane active" id="description">
-                                            <p>These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to and    what we like best, every pleasure is to be welcomed and every pain avoided. But in cetain circumstances and owing to the claims of duty or the obligations of busness it will frequently occur that pleasures have to be repudiatedTemporibus recaae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus to a maiores maiores alias consequatur aut  endis doloriu asperiores repellat.maiores what we like best, every pleasure is to be welcomed and every pain avoided. But in cetain circumstances and owing to the claims.</p>
+                                            <p th:text="${product.getProductInformation()}">These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to and    what we like best, every pleasure is to be welcomed and every pain avoided. But in cetain circumstances and owing to the claims of duty or the obligations of busness it will frequently occur that pleasures have to be repudiatedTemporibus recaae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus to a maiores maiores alias consequatur aut  endis doloriu asperiores repellat.maiores what we like best, every pleasure is to be welcomed and every pain avoided. But in cetain circumstances and owing to the claims.</p>
                                             <p>maiores alias consequatur aut  endis doloriu asperiores repellat.maiores what we like best, every pleasure is to be welcomed and every pain avoided. But in cetain circumstances and owing to the claims of duty or the obligations of busness it will frequently occur that pleasures have to be repudiatedTemporibus recaae. Itaque earum rerum hic tenetur a sapiente delectus.</p>
                                         </div>
                                         <div role="tabpanel" class="tab-pane" id="reviews">
-                                            <table class="table-data-sheet">
-                                                <tbody>
-                                                    <tr class="odd">
-                                                        <td>Compositions</td>
-                                                        <td>Cotton</td>
-                                                    </tr>
-                                                    <tr class="even">
-                                                        <td>Styles</td>
-                                                        <td>Casual</td>
-                                                    </tr>
-                                                    <tr class="odd">
-                                                        <td>Properties</td>
-                                                        <td>Short Sleeve</td>
-                                                    </tr>
-                                                </tbody>
-                                           </table>
+                                            <!--Todo add a review form and call the add review controller here-->
+                                            <div th:each = "review : ${reviews}">
+                                                <div class="date-added mb-20 pt-20" th:text="${review.getDate()}"><i class="zmdi zmdi-time mr-10"></i>Date : 26 oct 2016 </div>
+                                                <h5><a class="blog-title text-capitalize" href="#">Review summary</a></h5>
+                                                <p th:text="${review.getContent()}">Adipisicing elit, sed do eiusmod tempor incididunt adipisicing elit, sed do eiusmod tempor incididunt dolore magna aliqua. Ut enim ad minim</p>
+                                                <div class="post-info-author mt-30">
+                                                <span class="author mr-20">
+                                                    <i class="zmdi zmdi-account"></i>
+                                                    By
+                                                    <a href="#" title="Reviewer" th:text="${review.getAccountName()}"> A Mollik </a>
+                                                </span>
+                                                    <!--<div class="rating-icon pb-30 mt-10">-->
+                                                        <!--<option th:each="i : ${#numbers.sequence( 1.0, review.getRating(), 1.0)}">-->
+                                                            <!--<i class="zmdi zmdi-star"></i>-->
+                                                        <!--</option>-->
+                                                    <!--</div>-->
+                                                    <div class="rating-icon pb-30 mt-10">
+                                                        <i class="zmdi zmdi-star"></i>
+                                                        <i class="zmdi zmdi-star"></i>
+                                                        <i class="zmdi zmdi-star"></i>
+                                                        <i class="zmdi zmdi-star-half"></i>
+                                                        <i class="zmdi zmdi-star-half"></i>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            </div>
                                         </div>
                                         <div role="tabpanel" class="tab-pane" id="tag">
                                             <div id="product-comments-block-tab">
