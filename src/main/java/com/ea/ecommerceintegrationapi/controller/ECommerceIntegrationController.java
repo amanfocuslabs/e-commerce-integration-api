@@ -198,9 +198,6 @@ public class ECommerceIntegrationController {
         }
         model.addAttribute("subtotal", subtotal);
         model.addAttribute("grand", subtotal);
-
-        
-
         
         return "shop/cart";
     }
