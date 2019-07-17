@@ -17,6 +17,8 @@ HELP.md
 *.iws
 *.iml
 *.ipr
+.idea/misc.xml
+	.idea/vcs.xml
 
 ### NetBeans ###
 /nbproject/private/
