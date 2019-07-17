@@ -162,12 +162,12 @@ public class ECommerceIntegrationController {
 
         Long cartId = (Long)session.getSession().getAttribute("cartId");
         System.out.println("******************* :" + cartId);
-        List<Product> products = restTemplate.exchange(product_service_url, HttpMethod.GET, null, new ParameterizedTypeReference<List<Product>>(){}).getBody();
+
+        List<Product> products = restTemplate.exchange(cart_service_url + "/getAllProducts/" + cartId, HttpMethod.GET, null, new ParameterizedTypeReference<List<Product>>(){}).getBody();
         model.addAttribute("products", products);
         for (Product p : products) {
             System.out.println(p.getProductName());
         }
-
         
         return "shop/cart";
     }
