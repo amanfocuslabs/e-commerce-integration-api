@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <title>Account Information</title>
+</head>
+<body>
+<div class="container">
+<h1 th:text="'Welcome '+ ${account.userName}"></h1>
+    <div class="table-responsive">
+    <table class="table">
+        <th>Account Information</th>
+        <tr>
+            <td th:text="UserName "></td>
+            <td th:text="${account.userName}"></td>
+        </tr>
+        <tr>
+            <td th:text="Email "></td>
+            <td th:text="${account.email}"></td>
+        </tr>
+        <th>Address</th>
+        <tr style="font-weight: bold">
+            <td>Street</td>
+            <td>House Number</td>
+            <td>Zip Code</td>
+            <td>City</td>
+            <td>State</td>
+        </tr>
+
+        <tr th:each="address: ${account.address}">
+            <td th:text="${address.street}"></td>
+            <td th:text="${address.houseNumber}"></td>
+            <td th:text="${address.zipCode}"></td>
+            <td th:text="${address.city}"></td>
+            <td th:text="${address.state}"></td>
+        </tr>
+
+        <th>Cards</th>
+        <tr style="font-weight: bold">
+            <td>Name on Card</td>
+            <td>Card Number</td>
+            <td>Expiration Date</td>
+            <td>Card Type</td>
+        </tr>
+
+        <tr th:each="card: ${account.cards}">
+            <td th:text="${card.nameOnCard}"></td>
+            <td th:text="${card.cardNumber}"></td>
+            <td th:text="${card.expirationDate}"></td>
+            <td th:text="${card.cardType}"></td>
+        </tr>
+        <th>Membership</th>
+        <tr>
+           <td th:text="${account.membership}"></td>
+        </tr>
+
+
+    </table>
+    </div>
+</div>
+
+</body>
+</html>
