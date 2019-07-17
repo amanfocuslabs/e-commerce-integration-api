@@ -88,7 +88,7 @@ public class ECommerceIntegrationController {
 
         System.out.println(account.getEmail() + " " + account.getUserName());
         // Order history
-        return "account_profile";
+        return "accountDetail";
     }
 
     @RequestMapping(value = "/product-details" , method = RequestMethod.GET)   
