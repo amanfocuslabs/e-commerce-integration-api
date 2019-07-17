@@ -135,4 +135,9 @@ public class ECommerceIntegrationController {
     public String about(){
         return "about/about";
     }
+
+    @RequestMapping(value = "/cart" , method = RequestMethod.GET)   
+    public String cart(){
+        return "cart/cart";
+    }
 }
