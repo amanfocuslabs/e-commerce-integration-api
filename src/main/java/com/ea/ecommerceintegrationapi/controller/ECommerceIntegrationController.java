@@ -5,12 +5,17 @@ import com.ea.ecommerceintegrationapi.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -70,7 +75,7 @@ public class ECommerceIntegrationController {
     @PostMapping("/create")
     public String createOrder(@RequestParam Long accountId, @RequestParam Long cartId, @RequestParam Integer tax,
                                 @RequestParam Long shippingId, Model model){
-        Order order = restTemplate.postForObject(order_service_url + "/create/" + accountId + "/" + cartId + "/" + tax
+        Order order = restTemplate.postForObject(order_service_url + "create/" + accountId + "/" + cartId + "/" + tax
                 + "/" + shippingId, null, Order.class);
         model.addAttribute("Order", order);
         return "order_detail";
@@ -88,14 +93,34 @@ public class ECommerceIntegrationController {
     /*
     * GetAccountInformationByUserName
     * */
-    @GetMapping("/account")
-    public String getAccountInformationByUserName(@RequestParam String userName, Model model){
-        Account account = restTemplate.getForObject(account_service_url + "/" + userName, Account.class);
-        model.addAttribute("account", account);
+    @PostMapping("/login")
+    public String getAccountInformationByUserName(@Valid Account account, BindingResult result, Model model, HttpServletRequest request){
+        if (result.hasErrors()) {
+            return "account/login";
+        }
+        else {
+            Account returned = restTemplate.getForObject(account_service_url + "getByUserName/" + account.getUserName(), Account.class);
+            model.addAttribute("account", account);
+            if (returned.getUserName().equals(account.getUserName()) && returned.getPassword().equals(account.getPassword())) {
+                request.getSession().setAttribute("user",account);
+                return "home/index";
+            } else {
+                return "errorpages/404";
+            }
+        }
+    }
+    @PostMapping("/addAccount")
+    public String addAccount(Account account, RedirectAttributes attr) {
+        System.out.println(account.getUserName()+" "+account.getEmail());
+        HttpEntity<Account> request = new HttpEntity<>(account);
+        Account added = restTemplate.postForObject(account_service_url+"add", request, Account.class);
+        attr.addFlashAttribute("account",account);
 
-        System.out.println(account.getEmail() + " " + account.getUserName());
-        // Order history
         return "accountDetail";
+    }
+    @GetMapping("/account")
+    public String myAccount() {
+        return "account/my-account";
     }
 
     /*
@@ -132,7 +157,9 @@ public class ECommerceIntegrationController {
     }
 
     @RequestMapping(value = "/login" , method = RequestMethod.GET)   
-    public String login(){
+    public String login(Model model){
+        Account account=new Account();
+        model.addAttribute("account",account);
         return "account/login";
     }
 
@@ -164,10 +191,16 @@ public class ECommerceIntegrationController {
         System.out.println("******************* :" + cartId);
 
         List<Product> products = restTemplate.exchange(cart_service_url + "/getAllProducts/" + cartId, HttpMethod.GET, null, new ParameterizedTypeReference<List<Product>>(){}).getBody();
+        Long subtotal = new Long(0) ;
         model.addAttribute("products", products);
         for (Product p : products) {
-            System.out.println(p.getProductName());
+            subtotal += p.getPrice();
         }
+        model.addAttribute("subtotal", subtotal);
+        model.addAttribute("grand", subtotal);
+
+        
+
         
         return "shop/cart";
     }
