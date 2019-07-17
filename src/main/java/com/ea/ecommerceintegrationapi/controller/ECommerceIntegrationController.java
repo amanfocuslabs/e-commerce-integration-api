@@ -31,7 +31,7 @@ public class ECommerceIntegrationController {
     public String getProducts(Model model){
         List<Product> products = restTemplate.exchange(product_service_url, HttpMethod.GET, null, new ParameterizedTypeReference<List<Product>>(){}).getBody();
         model.addAttribute("products", products);
-        return "shop/shop";
+        return "shop/shop-full";
     }
 
     /*
