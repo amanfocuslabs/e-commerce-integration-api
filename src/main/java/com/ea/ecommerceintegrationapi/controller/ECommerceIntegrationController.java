@@ -161,12 +161,17 @@ public class ECommerceIntegrationController {
     public String cart(Model model , HttpServletRequest session){
 
         Long cartId = (Long)session.getSession().getAttribute("cartId");
-        System.out.println("******************* :" + cartId);
+       // System.out.println("******************* :" + cartId);
         List<Product> products = restTemplate.exchange(product_service_url, HttpMethod.GET, null, new ParameterizedTypeReference<List<Product>>(){}).getBody();
+        Long subtotal = new Long(0) ;
         model.addAttribute("products", products);
         for (Product p : products) {
-            System.out.println(p.getProductName());
+            subtotal += p.getPrice();
         }
+        model.addAttribute("subtotal", subtotal);
+        model.addAttribute("grand", subtotal);
+
+        
 
         
         return "shop/cart";

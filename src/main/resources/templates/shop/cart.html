@@ -152,7 +152,7 @@
                                                             <tbody>
                                                                 <tr class="cart-subtotal">
                                                                     <th>Subtotal</th>
-                                                                    <td>£215.00</td>
+                                                                    <td th:text="${subtotal}"></td>
                                                                 </tr>
                                                                 <tr class="cart-shipping">
                                                                     <th>Shipping</th>
@@ -160,11 +160,11 @@
                                                                 </tr>
                                                                 <tr class="cart-total">
                                                                     <th>Grand Total</th>
-                                                                    <td>£215.00</td>
+                                                                    <td th:text="${grand}"></td>
                                                                 </tr>
                                                             </tbody>
                                                         </table> 
-                                                        <a class="button extra-small pull-right" href="#" title="Add to Cart">
+                                                        <a class="button extra-small pull-right" href="/checkout" title="Add to Cart">
                                                             <span>Procced to checkout</span>
                                                         </a>                                                     
                                                     </div>
@@ -179,79 +179,7 @@
                 </div>
                 <!-- End Of Wishlist Area -->
     
-                <!-- Start Brand Area -->
-                <div class="brand-area pb-90">
-                    <div class="container">
-                        <div class="row">
-                            <div class="brand-list">
-                                <div class="col-md-12">
-                                    <div class="single-brand text-center">
-                                        <a href="#">
-                                            <img src="images/brand/1.png" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="single-brand text-center">
-                                        <a href="#">
-                                            <img src="images/brand/2.png" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="single-brand text-center">
-                                        <a href="#">
-                                            <img src="images/brand/3.png" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="single-brand text-center">
-                                        <a href="#">
-                                            <img src="images/brand/4.png" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="single-brand text-center">
-                                        <a href="#">
-                                            <img src="images/brand/5.png" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="single-brand text-center">
-                                        <a href="#">
-                                            <img src="images/brand/6.png" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                                 <div class="col-md-12">
-                                    <div class="single-brand text-center">
-                                        <a href="#">
-                                            <img src="images/brand/1.png" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="single-brand text-center">
-                                        <a href="#">
-                                            <img src="images/brand/2.png" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="single-brand text-center">
-                                        <a href="#">
-                                            <img src="images/brand/3.png" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Of Brand Area -->
+                
                 <!-- Start Newsletter Area -->
                 <div class="newsletter-area">
                     <div class="container">
