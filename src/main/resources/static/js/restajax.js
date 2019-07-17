@@ -3,6 +3,13 @@ function addToCart(id , name, price){
         type: "POST",
         contentType: "application/json",
         url: "/api/addToCart",
-        data: JSON.stringify(id)
+        async:true,
+        data: JSON.stringify(id),
+        success:function(data){
+            console.log(data);
+        }
     });
+    
+
+
 }

@@ -153,7 +153,14 @@ public class ECommerceIntegrationController {
     }
 
     @RequestMapping(value = "/cart" , method = RequestMethod.GET)   
-    public String cart(){
-        return "cart/cart";
+    public String cart(Model model){
+        List<Product> products = restTemplate.exchange(product_service_url, HttpMethod.GET, null, new ParameterizedTypeReference<List<Product>>(){}).getBody();
+        model.addAttribute("products", products);
+        for (Product p : products) {
+            System.out.println(p.getProductName());
+        }
+
+        
+        return "shop/cart";
     }
 }
