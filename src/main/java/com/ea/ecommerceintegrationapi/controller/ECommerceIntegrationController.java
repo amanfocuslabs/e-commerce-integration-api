@@ -41,9 +41,10 @@ public class ECommerceIntegrationController {
     * AddToCart
     * */
     @PostMapping("/addToCart")
-    public void addToCart(@RequestParam Product product, @RequestParam Integer quantity, @RequestParam Long cartId, Model model){
-        Cart cart = restTemplate.getForObject(cart_service_url + "/addToCart/" + product.getId() + "/" + quantity + "/" + cartId, Cart.class);
-        model.addAttribute("Cart",cart);
+    public void addToCart(@ModelAttribute Product product){
+        //Cart cart = restTemplate.getForObject(cart_service_url + "/addToCart/" + product.getId() + "/" + quantity + "/" + cartId, Cart.class);
+        //model.addAttribute("Cart",cart);
+        System.out.println(product.getProductName());
     }
 
     /*
