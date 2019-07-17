@@ -10,6 +10,7 @@ import java.util.List;
 public class Account implements Serializable {
     private Long id;
     private String userName;
+    private String password;
     private String email;
     private Membership membership;
     private List<Address> address;

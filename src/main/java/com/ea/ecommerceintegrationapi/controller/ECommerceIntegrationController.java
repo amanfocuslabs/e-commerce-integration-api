@@ -20,7 +20,7 @@ public class ECommerceIntegrationController {
 
     private String order_service_url = "http://order-service/api/posts";
     private String product_service_url = "http://product-service/api/posts";
-    private String account_service_url = "http://account-service:8085/rest/account/test";
+    private String account_service_url = "http://account-service:8085/rest/account/getByUserName";
 
     /*
     * GetProducts
@@ -40,9 +40,9 @@ public class ECommerceIntegrationController {
     @GetMapping("/account")
     public String getAccountInformationByUserName(@RequestParam String userName, Model model){
         Account account = restTemplate.getForObject(account_service_url + "/" + userName, Account.class);
-
-        System.out.println(account.getEmail() + " " + account.getUserName());
+        model.addAttribute("account",account);
         // Order history
-        return "account_profile";
+        return "accountDetail";
     }
+
 }
