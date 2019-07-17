@@ -20,7 +20,7 @@ public class ECommerceIntegrationController {
     private RestTemplate restTemplate;
 
     private String order_service_url = "http://order-service:8081/rest/order";
-    private String product_service_url = "http://product-service:8084/rest/product";
+    private String product_service_url = "http://product-service:8084/rest/product/";
     private String account_service_url = "http://account-service:8085/rest/account/test";
     private String cart_service_url = "http://cart-service:8083/rest/cart";
 
@@ -31,6 +31,10 @@ public class ECommerceIntegrationController {
     public String getProducts(Model model){
         List<Product> products = restTemplate.exchange(product_service_url, HttpMethod.GET, null, new ParameterizedTypeReference<List<Product>>(){}).getBody();
         model.addAttribute("products", products);
+        for (Product p : products) {
+            System.out.println(p.getProductName());
+        }
+
         return "shop/shop-full";
     }
 
