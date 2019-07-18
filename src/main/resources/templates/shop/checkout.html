@@ -75,29 +75,14 @@
                                 </div>  
                                 <table>
                                     <tbody>
-                                        <tr>
-                                            <th>Men’s Blue T-Shirt</th>
-                                            <td>£86.00</td>
+                                        <tr th:each = "product : ${products}">
+                                            <th th:text="${product.productName}"></th>
+                                            <td th:text="${product.price}"></td>
                                         </tr>
-                                        <tr>
-                                            <th>Women’s Blue T-Shirt</th>
-                                            <td>£69.00</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Cart Subtotal</th>
-                                            <td>£155.00</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Shipping and Handing</th>
-                                            <td>£15.00</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Vat</th>
-                                            <td>£00.00</td>
-                                        </tr>
+                                        
                                         <tr class="total">
                                             <th>Order Total</th>
-                                            <td>£325.00</td>
+                                            <td th:text="${grand}"></td>
                                         </tr>
                                     </tbody>
                                 </table>   
@@ -148,7 +133,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a title="Add to Cart" href="#" class="button extra-small">
+                                <a title="Add to Cart" href="/create" class="button extra-small">
                                     <span>place order</span>
                                 </a>                          
                             </div>
@@ -158,79 +143,7 @@
             </div>
             <!-- End Of checkout Area -->
 
-            <!-- Start Brand Area -->
-            <div class="brand-area pb-90">
-                <div class="container">
-                    <div class="row">
-                        <div class="brand-list">
-                            <div class="col-md-12">
-                                <div class="single-brand text-center">
-                                    <a href="#">
-                                        <img src="images/brand/1.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single-brand text-center">
-                                    <a href="#">
-                                        <img src="images/brand/2.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single-brand text-center">
-                                    <a href="#">
-                                        <img src="images/brand/3.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single-brand text-center">
-                                    <a href="#">
-                                        <img src="images/brand/4.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single-brand text-center">
-                                    <a href="#">
-                                        <img src="images/brand/5.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single-brand text-center">
-                                    <a href="#">
-                                        <img src="images/brand/6.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                             <div class="col-md-12">
-                                <div class="single-brand text-center">
-                                    <a href="#">
-                                        <img src="images/brand/1.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single-brand text-center">
-                                    <a href="#">
-                                        <img src="images/brand/2.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single-brand text-center">
-                                    <a href="#">
-                                        <img src="images/brand/3.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Of Brand Area -->
+
             <!-- Start Newsletter Area -->
             <div class="newsletter-area">
                 <div class="container">
