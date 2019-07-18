@@ -72,13 +72,17 @@ public class ECommerceIntegrationController {
     * Order
     * */
     // Todo figure out how to pass payment type - id
-    @PostMapping("/create")
-    public String createOrder(@RequestParam Long accountId, @RequestParam Long cartId, @RequestParam Integer tax,
-                                @RequestParam Long shippingId, Model model){
-        Order order = restTemplate.postForObject(order_service_url + "create/" + accountId + "/" + cartId + "/" + tax
-                + "/" + shippingId, null, Order.class);
+    @GetMapping("/create")
+    public String createOrder(HttpServletRequest request , Model model){
+        Account account = (Account)request.getSession().getAttribute("user");
+        Long cartId = (Long)request.getSession().getAttribute("cartId");
+        //Long tax = (Long)request.getSession().getAttribute("grand");
+        //tax = tax / 10;
+
+        Order order = restTemplate.postForObject(order_service_url + "create/" + account.getId() + "/" + cartId + "/" + 56
+                + "/" + 1 , null, Order.class);
         model.addAttribute("Order", order);
-        return "order_detail";
+        return "redirect:shop/shop-full";
     }
 
 
@@ -164,7 +168,20 @@ public class ECommerceIntegrationController {
     }
 
     @RequestMapping(value = "/checkout" , method = RequestMethod.GET)   
-    public String checkout(){
+    public String checkout(Model model , HttpServletRequest session){
+
+        Long cartId = (Long)session.getSession().getAttribute("cartId");
+        //System.out.println("******************* :" + cartId);
+
+        List<Product> products = restTemplate.exchange(cart_service_url + "/getAllProducts/" + cartId, HttpMethod.GET, null, new ParameterizedTypeReference<List<Product>>(){}).getBody();
+        Long subtotal = new Long(0) ;
+        model.addAttribute("products", products);
+        for (Product p : products) {
+            subtotal += p.getPrice();
+        }
+        model.addAttribute("subtotal", subtotal);
+        model.addAttribute("grand", subtotal);
+
         return "shop/checkout";
     }
     @RequestMapping(value = "/compare" , method = RequestMethod.GET)   
@@ -188,7 +205,7 @@ public class ECommerceIntegrationController {
     public String cart(Model model , HttpServletRequest session){
 
         Long cartId = (Long)session.getSession().getAttribute("cartId");
-        System.out.println("******************* :" + cartId);
+        //System.out.println("******************* :" + cartId);
 
         List<Product> products = restTemplate.exchange(cart_service_url + "/getAllProducts/" + cartId, HttpMethod.GET, null, new ParameterizedTypeReference<List<Product>>(){}).getBody();
         Long subtotal = new Long(0) ;
