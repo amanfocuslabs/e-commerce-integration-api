@@ -114,12 +114,12 @@ public class ECommerceIntegrationController {
         }
     }
     @PostMapping("/addAccount")
-    public String addAccount(Account account, RedirectAttributes attr) {
+    public String addAccount(Account account, Model model) {
         HttpEntity<Account> request = new HttpEntity<>(account);
         Account added = restTemplate.postForObject(account_service_url+"add", request, Account.class);
-        attr.addFlashAttribute("account",account);
+        model.addAttribute("account",account);
 
-        return "accountDetail";
+        return "account/my-account";
     }
     @GetMapping("/account")
     public String myAccount() {
