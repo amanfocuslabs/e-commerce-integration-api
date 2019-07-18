@@ -104,10 +104,10 @@ public class ECommerceIntegrationController {
         }
         else {
             Account returned = restTemplate.getForObject(account_service_url + "getByUserName/" + account.getUserName(), Account.class);
-            model.addAttribute("account", account);
+            model.addAttribute("account", returned);
             if (returned.getUserName().equals(account.getUserName()) && returned.getPassword().equals(account.getPassword())) {
                 request.getSession().setAttribute("user",returned);
-                return "home/index";
+                return "account/my-account";
             } else {
                 return "errorpages/404";
             }
