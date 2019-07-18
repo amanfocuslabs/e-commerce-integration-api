@@ -82,7 +82,7 @@ public class ECommerceIntegrationController {
         Order order = restTemplate.postForObject(order_service_url + "create/" + account.getId() + "/" + cartId + "/" + 56
                 + "/" + 1 , null, Order.class);
         model.addAttribute("Order", order);
-        return "redirect:shop/shop-full";
+        return "redirect:/product";
     }
 
 
