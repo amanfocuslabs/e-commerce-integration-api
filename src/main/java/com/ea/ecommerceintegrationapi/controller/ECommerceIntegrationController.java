@@ -78,7 +78,7 @@ public class ECommerceIntegrationController {
         Long cartId = (Long)request.getSession().getAttribute("cartId");
         //Long tax = (Long)request.getSession().getAttribute("grand");
         //tax = tax / 10;
-
+        System.out.println(account.getId() + " + " + cartId);
         Order order = restTemplate.postForObject(order_service_url + "create/" + account.getId() + "/" + cartId + "/" + 56
                 + "/" + 1 , null, Order.class);
         model.addAttribute("Order", order);
@@ -106,7 +106,7 @@ public class ECommerceIntegrationController {
             Account returned = restTemplate.getForObject(account_service_url + "getByUserName/" + account.getUserName(), Account.class);
             model.addAttribute("account", account);
             if (returned.getUserName().equals(account.getUserName()) && returned.getPassword().equals(account.getPassword())) {
-                request.getSession().setAttribute("user",account);
+                request.getSession().setAttribute("user",returned);
                 return "home/index";
             } else {
                 return "errorpages/404";
