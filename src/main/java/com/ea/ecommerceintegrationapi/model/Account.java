@@ -17,8 +17,8 @@ public class Account implements Serializable {
     private String password;
     private String email;
     private Membership membership;
-    private List<Address> address;
-    private List<Card> cards;
+    private Address address;
+    private Card cards;
 
 
 }

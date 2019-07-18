@@ -115,7 +115,6 @@ public class ECommerceIntegrationController {
     }
     @PostMapping("/addAccount")
     public String addAccount(Account account, RedirectAttributes attr) {
-        System.out.println(account.getUserName()+" "+account.getEmail());
         HttpEntity<Account> request = new HttpEntity<>(account);
         Account added = restTemplate.postForObject(account_service_url+"add", request, Account.class);
         attr.addFlashAttribute("account",account);
@@ -125,6 +124,10 @@ public class ECommerceIntegrationController {
     @GetMapping("/account")
     public String myAccount() {
         return "account/my-account";
+    }
+    @GetMapping("/index")
+    public String index() {
+        return "home/index";
     }
 
     /*

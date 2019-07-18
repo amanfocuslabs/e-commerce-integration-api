@@ -1,101 +1,247 @@
 <!DOCTYPE html>
 <html layout:decorator="shared/layout"
-	xmlns:th="http://www.thymeleaf.org">
-
+      xmlns:th="http://www.thymeleaf.org">
 
 
 <body>
-    <th:block layout:fragment ="header">
-            <title>Login / Register || Freak</title>
-    </th:block>
+<th:block layout:fragment="header">
+    <title>Login / Register || Freak</title>
+</th:block>
 
-    <th:block layout:fragment = "content">
+<th:block layout:fragment="content">
 
-        <!-- Start Breadcrumbs Area -->
-        <div class="breadcrumbs-area section-padding">
-                <div class="container">
-                    <div class="row">
+    <!-- Start Breadcrumbs Area -->
+    <div class="breadcrumbs-area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="breadcrumbs text-center text-white">
+                        <h3 class="text-uppercase">Login / Register</h3>
+                        <ul class="breadcrumbs-list">
+                            <li>
+                                <a href="index.html" title="Return to Home">Home</a>
+                            </li>
+                            <li>/</li>
+                            <li>Login / Register</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Of Breadcrumbs Area -->
+    <!-- Start page content -->
+    <section id="page-content" class="page-wrapper">
+        <!-- Start Wishlist Area -->
+        <div class="login-section section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="registered-customers">
+                            <div class="section-title text-uppercase mb-40">
+                                <h4>REGISTERED CUSTOMERS</h4>
+                            </div>
+                            <form action="#" th:action="@{/login}" th:object="${account}" method="post">
+                                <div class="login-account p-30 box-shadow">
+                                    <p>If you have an account with us, Please log in.</p>
+                                    <span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"
+                                          style="color: red"></span>
+                                    <input type="text" th:field="*{userName}" placeholder="User Name" name="userName">
+                                    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                                          style="color: red"></span>
+                                    <input type="password" th:field="*{password}" placeholder="Password"
+                                           name="password">
+                                    <p>
+                                        <small><a href="#">Forgot our password?</a></small>
+                                    </p>
+                                    <button type="submit" class="submit-btn">login</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="registered-customers">
+                            <div class="section-title text-uppercase mb-40">
+                                <h4>NEW CUSTOMERS</h4>
+                            </div>
+                            <form action="#" th:action="@{/addAccount}" th:object="${account}" method="post">
+                                <div class="login-account p-30 box-shadow">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input type="text" th:field="*{userName}" id="userName"
+                                                   placeholder="User Name">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" th:field="*{email}" id="email"
+                                                   placeholder="Email Address">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" th:field="*{password}" id="password"
+                                                   placeholder="Password">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <select class="custom-select" th:field="*{membership}">
+                                                <option value="" selected hidden>Membership</option>
+                                                <option value="PRIME">Prime</option>
+                                                <option value="STANDARD">Standard</option>
+                                            </select>
+                                        </div>
+                                        <legend>Address</legend>
+                                        <div class="col-sm-6">
+                                            <input type="text" th:field="*{address.street}" id="street"
+                                                   placeholder="Street">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" th:field="*{address.houseNumber}" id="houseNumber"
+                                                   placeholder="House Number">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" th:field="*{address.zipCode}" id="zipcode"
+                                                   placeholder="Zip Code">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" th:field="*{address.city}" id="city" placeholder="City">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" th:field="*{address.state}" id="state"
+                                                   placeholder="State">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <legend>Add Card</legend>
+                                        <div class="col-sm-6">
+                                            <input type="text" th:field="*{cards.nameOnCard}" id="nameOnCard"
+                                                   placeholder="Name on Card">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" th:field="*{cards.cardNumber}" id="cardNumber"
+                                                   placeholder="Card Number">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <select class="custom-select" th:field="*{cards.cardType}">
+                                                <option value="" selected hidden>Select Card Type</option>
+                                                <option value="Debit">Debit</option>
+                                                <option value="Credit">Credit</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" th:field="*{cards.expirationDate}" id="expirationDate" placeholder="Expiration date (YYYY-MM-DD)">
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <button value="register" type="submit" class="submit-btn mt-20">Register
+                                            </button>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button type="reset" class="submit-btn mt-20">Clear</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+<<<<<<< HEAD
+            </div>
+        </div>
+        <!-- End Of Wishlist Area -->
+
+        <!-- Start Brand Area -->
+        <div class="brand-area pb-90">
+            <div class="container">
+                <div class="row">
+                    <div class="brand-list">
                         <div class="col-md-12">
-                            <div class="breadcrumbs text-center text-white">
-                                <h3 class="text-uppercase">Login / Register</h3>
-                                <ul class="breadcrumbs-list">
-                                    <li>
-                                        <a href="index.html" title="Return to Home">Home</a>
-                                    </li>
-                                    <li>/</li>
-                                    <li>Login / Register</li>
-                                </ul>
+                            <div class="single-brand text-center">
+                                <a href="#">
+                                    <img src="images/brand/1.png" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="single-brand text-center">
+                                <a href="#">
+                                    <img src="images/brand/2.png" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="single-brand text-center">
+                                <a href="#">
+                                    <img src="images/brand/3.png" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="single-brand text-center">
+                                <a href="#">
+                                    <img src="images/brand/4.png" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="single-brand text-center">
+                                <a href="#">
+                                    <img src="images/brand/5.png" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="single-brand text-center">
+                                <a href="#">
+                                    <img src="images/brand/6.png" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="single-brand text-center">
+                                <a href="#">
+                                    <img src="images/brand/1.png" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="single-brand text-center">
+                                <a href="#">
+                                    <img src="images/brand/2.png" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="single-brand text-center">
+                                <a href="#">
+                                    <img src="images/brand/3.png" alt="">
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- End Of Breadcrumbs Area -->
-            <!-- Start page content -->
-            <section id="page-content" class="page-wrapper">
-                <!-- Start Wishlist Area -->
-                <div class="login-section section-padding">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="registered-customers">
-                                    <div class="section-title text-uppercase mb-40">
-                                        <h4>REGISTERED CUSTOMERS</h4>
-                                    </div>
-                                    <form action="#" th:action="@{/login}"  th:object="${account}" method="post">
-                                        <div class="login-account p-30 box-shadow">
-                                            <p>If you have an account with us, Please log in.</p>
-                                            <span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" style="color: red"></span>
-                                            <input type="text"  th:field="*{userName}" placeholder="User Name" name="userName">
-                                            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="color: red"></span>
-                                            <input type="password" th:field="*{password}" placeholder="Password" name="password">
-                                            <p><small><a href="#">Forgot our password?</a></small></p>
-                                            <button type="submit" class="submit-btn">login</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="registered-customers">
-                                    <div class="section-title text-uppercase mb-40">
-                                        <h4>NEW CUSTOMERS</h4>
-                                    </div>
-                                    <form action="#"th:action="@{/addAccount}" th:object="${account}" method="post">
-                                        <div class="login-account p-30 box-shadow">
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <input type="text" th:field="*{userName}" id="userName" placeholder="User Name">
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <input type="text" th:field="*{email}" id="email" placeholder="Email Address">
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <input type="text" th:field="*{password}" id="password" placeholder="Password">
-                                                </div>
-                                                <div class="col-sm-6">
-                                                <select class="custom-select" th:field="*{membership}"  >
-                                                    <option value="" selected hidden>Membership</option>
-                                                    <option value="PRIME">Prime</option>
-                                                    <option value="STANDARD">Standard</option>
-                                                </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <button value="register" type="submit" class="submit-btn mt-20">Register</button>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <button type="reset" class="submit-btn mt-20">Clear</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+        </div>
+        <!-- End Of Brand Area -->
+        <!-- Start Newsletter Area -->
+        <div class="newsletter-area">
+            <div class="container">
+                <div class="row">
+                    <div class="newsletter-content default-bg clearfix ptb-40">
+                        <div class="col-md-offset-2 col-md-3 col-sm-5">
+                            <div class="newsletter-title text-white text-uppercase">
+                                <h4>NewsLetter Sign-Up</h4>
                             </div>
                         </div>
-                    </div>
-                </div>
+                        <div class="col-md-5 col-sm-7">
+                            <div class="signup-form">
+                                <form class="news-form" action="#">
+                                    <input type="text" placeholder="Enter your email address..." class="f-form">
+                                    <button class="submit text-uppercase">subscribe</button>
+                                </form>
+=======
                 <!-- End Of Wishlist Area -->
     
                 
@@ -117,19 +263,22 @@
                                         </form>
                                     </div>
                                 </div>
+>>>>>>> develop
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- End Of Newsletter Area -->
-            </section>
-            <!-- End page content -->
-            
-    </th:block>
-    
-    <th:block layout:fragment="footer">
-            <!-- page specific Placed js at the end of the document  -->
-        </th:block>
+            </div>
+        </div>
+        <!-- End Of Newsletter Area -->
+    </section>
+    <!-- End page content -->
+
+</th:block>
+
+<th:block layout:fragment="footer">
+    <!-- page specific Placed js at the end of the document  -->
+</th:block>
 </body>
 
 </html>
